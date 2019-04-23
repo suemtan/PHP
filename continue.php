@@ -1,5 +1,5 @@
 <?php
-	//better continue.php
+	//better continue.php - destroy cookie and session data
 	
 	session_start();
 	if (isset($_SESSION['username'])) {
