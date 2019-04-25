@@ -22,6 +22,16 @@
 			
 		if ($token == $row[3]) {
 				session_start();
+			//To prevent Session fixation, use session_regenerate_id
+				if(!isset($_SESSION['initiate']))
+				{
+					session_regenerate_id();
+					$_SESSION['initiate'] = 1;
+				}
+				if(!isset($_SESSION['count'])) $_SESSION['count']=0;
+				else ++$_SESSION['count'];
+				echo $_SESSION['count'];
+			// set session 
 				$_SESSION[username] = $un_temp;
 				$_SESSION[password] = $pw_temp;
 				$_SESSION[forename] = $row[0];
